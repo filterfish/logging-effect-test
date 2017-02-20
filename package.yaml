@@ -1,0 +1,33 @@
+name: logging-effect-test
+version: 0.1.0
+synopsis: Test logging-effect to see if it works when STDOUT is a pipe.
+description: Test logging-effect to see if it works when STDOUT is a pipe.
+maintainer: Richard Heycock <rgh@filterfish.org>
+license: BSD3
+github: filterfish/logging-effect-test
+category: Logging
+
+ghc-options: -Wall -Werror
+default-extensions:
+  - NoImplicitPrelude
+  - OverloadedStrings
+
+dependencies:
+  - base >= 4.9 && < 5
+  - protolude
+  - time
+  - logging-effect
+  - wl-pprint-text
+
+library:
+  source-dirs: src
+  dependencies:
+    - exceptions
+    - wl-pprint-text
+
+executables:
+  logging-test:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+      - logging-effect-test
