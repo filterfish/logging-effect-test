@@ -13,11 +13,16 @@ import qualified Logging as Log
 
 
 main :: IO ()
-main = forever $ do
-  logMessage
-  threadDelay (1000 * 1000)
-
+main = do
+  setStdoutBufferOptions
+  forever $ do
+    logMessage
+    threadDelay (1000 * 1000)
 
 logMessage :: IO ()
 logMessage =
   Log.withLogging Debug $ Log.log Warning (text "However, for longer running high performance applications there is a slight problem")
+
+
+setStdoutBufferOptions :: IO ()
+setStdoutBufferOptions = hSetBuffering stdout $ BlockBuffering (Just 8192)
