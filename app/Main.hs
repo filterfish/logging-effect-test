@@ -23,6 +23,5 @@ logMessage :: IO ()
 logMessage =
   Log.withLogging Debug $ Log.log Warning (text "However, for longer running high performance applications there is a slight problem")
 
-
 setStdoutBufferOptions :: IO ()
-setStdoutBufferOptions = hSetBuffering stdout $ BlockBuffering (Just 8192)
+setStdoutBufferOptions = hSetBuffering stdout LineBuffering
